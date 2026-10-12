@@ -1,0 +1,55 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1786982836513,
+      "tag": "0000_graceful_wither",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1786988541526,
+      "tag": "0001_lowly_harrier",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1786998149032,
+      "tag": "0002_regular_banshee",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1787675499410,
+      "tag": "0003_noisy_mongoose",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1787836541569,
+      "tag": "0004_aberrant_lionheart",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1787838012722,
+      "tag": "0005_vengeful_shaman",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "6",
+      "when": 1788110370240,
+      "tag": "0006_sad_diamondback",
+      "breakpoints": true
+    }
+  ]
+}

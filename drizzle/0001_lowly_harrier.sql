@@ -1,0 +1,1 @@
+ALTER TABLE `tournaments` ADD `registration_url` text DEFAULT 'https://forms.gle/bnM2JpHxX5b4Jff96' NOT NULL;
