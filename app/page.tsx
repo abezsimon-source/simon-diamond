@@ -299,7 +299,10 @@ export default async function Home() {
           )}
           <a href="#experience">The Experience</a>
           <a href="#gallery">Photos</a>
-          <a className="manage-nav-button" href="/manage">
+          <a
+            className="manage-nav-button"
+            href="https://simon-diamond-tournaments.abezsimon.workers.dev/manage"
+          >
             Manage Website
           </a>
           <a className="nav-button contact-button" href="#contact">
