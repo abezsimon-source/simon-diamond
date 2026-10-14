@@ -8,37 +8,43 @@ export default function ContactForm({ tournamentOptions }: { tournamentOptions: 
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (sending) return;
     setSending(true);
-    setStatus("");
+    setStatus("Sending your message…");
     const form = event.currentTarget;
     const values = Object.fromEntries(new FormData(form));
-    const response = await fetch("/api/inquiries", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(values),
-    });
-    const data = await response.json();
-    setSending(false);
-    if (!response.ok) {
-      setStatus(data.error || "Your message could not be sent. Please try again.");
-      return;
-    }
     try {
-      await fetch("https://formsubmit.co/ajax/abezsimon@gmail.com", {
+      const response = await fetch("/api/inquiries", {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          ...values,
-          _subject: `New Simon Diamond message from ${String(values.name || "a visitor")}`,
-          _template: "table",
-          _captcha: "false",
-        }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
       });
+      const data = await response.json();
+      if (!response.ok) {
+        setStatus(data.error || "Your message could not be sent. Please try again.");
+        return;
+      }
+      try {
+        await fetch("https://formsubmit.co/ajax/abezsimon@gmail.com", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({
+            ...values,
+            _subject: `New Simon Diamond message from ${String(values.name || "a visitor")}`,
+            _template: "table",
+            _captcha: "false",
+          }),
+        });
+      } catch {
+        // The message remains saved on the private management page.
+      }
+      form.reset();
+      setStatus("Message sent. We’ll get back to you soon.");
     } catch {
-      // The message remains saved on the private management page.
+      setStatus("Your message could not be sent. Please try again.");
+    } finally {
+      setSending(false);
     }
-    form.reset();
-    setStatus("Message sent. We’ll get back to you soon.");
   }
 
   return <form className="contact-form" onSubmit={submit}>
